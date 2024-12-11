@@ -1,4 +1,5 @@
 using Xunit;
+using Hotelaria.Models;
 
 namespace Hotelaria.Tests
 {

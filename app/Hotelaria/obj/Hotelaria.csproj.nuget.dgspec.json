@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\ProjetoDesignPattern\\app\\Hotelaria\\Hotelaria.csproj": {}
+    "C:\\Repositórios\\DesignPattern\\app\\Hotelaria\\Hotelaria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\ProjetoDesignPattern\\app\\Hotelaria\\Hotelaria.csproj": {
+    "C:\\Repositórios\\DesignPattern\\app\\Hotelaria\\Hotelaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\ProjetoDesignPattern\\app\\Hotelaria\\Hotelaria.csproj",
+        "projectUniqueName": "C:\\Repositórios\\DesignPattern\\app\\Hotelaria\\Hotelaria.csproj",
         "projectName": "Hotelaria",
-        "projectPath": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\ProjetoDesignPattern\\app\\Hotelaria\\Hotelaria.csproj",
-        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\ProjetoDesignPattern\\app\\Hotelaria\\obj\\",
+        "projectPath": "C:\\Repositórios\\DesignPattern\\app\\Hotelaria\\Hotelaria.csproj",
+        "packagesPath": "C:\\Users\\g_gab\\.nuget\\packages\\",
+        "outputPath": "C:\\Repositórios\\DesignPattern\\app\\Hotelaria\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\g_gab\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
