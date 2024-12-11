@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{59BFE1EF-C75B-4F5E-BF0A-928F91350615}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelaria", "app\Hotelaria\Hotelaria.csproj", "{32AFC4DA-F3B8-4E2C-9E97-7FC6202182B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32AFC4DA-F3B8-4E2C-9E97-7FC6202182B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32AFC4DA-F3B8-4E2C-9E97-7FC6202182B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32AFC4DA-F3B8-4E2C-9E97-7FC6202182B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32AFC4DA-F3B8-4E2C-9E97-7FC6202182B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{32AFC4DA-F3B8-4E2C-9E97-7FC6202182B3} = {59BFE1EF-C75B-4F5E-BF0A-928F91350615}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6B37D1E-CA10-469B-B50D-0BAE428B6587}
+	EndGlobalSection
+EndGlobal
