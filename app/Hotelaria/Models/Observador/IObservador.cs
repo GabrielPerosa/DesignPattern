@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Hotelaria.Models
+namespace Hotelaria.Models.Observador
 {
     public interface IObservador
     {

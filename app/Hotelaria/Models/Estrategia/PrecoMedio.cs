@@ -1,12 +1,13 @@
 using System;
+using Hotelaria.Models.Quartos;
 
-namespace Hotelaria.Models
+
+namespace Hotelaria.Models.Estrategia
 {
-    public class PrecoDuplo : IEstrategiaDePreco
+    public class PrecoMedio : IEstrategiaDePreco
     {
         public decimal CalcularPreco(Quarto quarto)
         {
-            // Preço fixo para o quarto duplo
             return 200m;
         }
     }

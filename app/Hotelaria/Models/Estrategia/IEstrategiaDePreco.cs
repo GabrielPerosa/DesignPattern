@@ -1,6 +1,8 @@
 using System;
+using Hotelaria.Models.Quartos;
 
-namespace Hotelaria.Models
+
+namespace Hotelaria.Models.Estrategia
 {
     public interface IEstrategiaDePreco
     {

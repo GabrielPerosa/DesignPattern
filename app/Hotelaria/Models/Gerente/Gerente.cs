@@ -1,12 +1,12 @@
 using System;
-using System.Collections.Generic;
+using Hotelaria.Models.Quartos;
 
-namespace Hotelaria.Models
+namespace Hotelaria.Models.Gerente
 {
     public class Gerente
     {
         // Instancia pertencente a classe
-        private static Gerente _instancia;
+        private static Gerente _instancia = new Gerente();
 
         public static LinkedList<string> Reservas { get; private set; } = new LinkedList<string>();
 
@@ -16,10 +16,6 @@ namespace Hotelaria.Models
         // Metodo para obter a instancia
         public static Gerente ObterInstancia() 
         {
-            if (_instancia == null)
-            {
-                _instancia = new Gerente();
-            }
             return _instancia;
         }
 

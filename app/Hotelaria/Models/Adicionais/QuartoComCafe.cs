@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Hotelaria.Models.Quartos;
 
-namespace Hotelaria.Models
+
+namespace Hotelaria.Models.Adicionais
 {
     public class QuartoComCafe : QuartoAdicionais
     {

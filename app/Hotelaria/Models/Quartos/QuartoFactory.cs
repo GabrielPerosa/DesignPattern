@@ -1,6 +1,6 @@
 using System;
 
-namespace Hotelaria.Models
+namespace Hotelaria.Models.Quartos
 {
     // Para tipar a entrada de CriarQuarto
     public enum TipoQuarto
