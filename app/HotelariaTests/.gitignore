@@ -1,0 +1,53 @@
+# .NET
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]ebugPortable/
+[Dd]istPortable/
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+.vscode/
+
+# Build results
+[Aa]rchive/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.vspscc
+
+# Tye files (if you're using Tye)
+.tye/
+
+# xUnit test result files
+test-results/
+
+# JetBrains Rider
+.idea/
+
+# VS Code directories and files
+.vscode/
+
+# .NET Core / .NET 5+ SDK and runtime
+*.vscode
+.vs/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Npm packages (if used)
+node_modules/
+
+# ASP.NET Core files (if applicable)
+appsettings.json
+appsettings.Development.json
