@@ -3,7 +3,7 @@ using Hotelaria.Models;
 
 namespace Hotelaria.Tests
 {
-    public class QuartoFactoryTests  // Tornando a classe pública
+    public class QuartoFactoryTests
     {
 
         /*
