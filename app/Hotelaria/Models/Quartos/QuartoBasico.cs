@@ -1,6 +1,6 @@
 using System;
 
-namespace Hotelaria.Models
+namespace Hotelaria.Models.Quartos
 {
     public class QuartoBasico : Quarto
     {

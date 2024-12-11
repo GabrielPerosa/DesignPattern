@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace Hotelaria.Models
+namespace Hotelaria.Models.Observador
 {
     public class SistemaReserva
     {
         private readonly List<IObservador> _observadores = new List<IObservador>();
 
+        // Expondo os observadores através de uma propriedade somente leitura
+        public IReadOnlyList<IObservador> Observadores => _observadores;
+        
         // Adiciona um observador (administrador) à lista
         public void AdicionarObservador(IObservador observador)
         {

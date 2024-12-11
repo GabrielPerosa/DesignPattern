@@ -1,6 +1,7 @@
 using System;
+using Hotelaria.Models.Quartos;
 
-namespace Hotelaria.Models
+namespace Hotelaria.Models.Adicionais
 {
     public abstract class QuartoAdicionais : Quarto
     {
