@@ -1,4 +1,5 @@
-using Hotelaria.Models;
+using Hotelaria.Models.Gerente;
+using Hotelaria.Models.Quartos;
 using Xunit;
 
 namespace HotelariaTests

@@ -1,6 +1,8 @@
 using System;
 using Xunit;
-using Hotelaria.Models;
+using Hotelaria.Models.Adicionais;
+using Hotelaria.Models.Quartos;
+
 
 namespace HotelariaTests
 {
@@ -14,7 +16,7 @@ namespace HotelariaTests
         {
             //Arrange 
             Quarto quarto1 = QuartoFactory.CriarQuarto(TipoQuarto.Luxo);
-            Quarto quarto1 = QuartoFactory.CriarQuarto(TipoQuarto.Medio);
+            Quarto quarto2 = QuartoFactory.CriarQuarto(TipoQuarto.Medio);
 
             // Act
             QuartoAdicionais quartoComCafe = new QuartoComCafe(quarto1);

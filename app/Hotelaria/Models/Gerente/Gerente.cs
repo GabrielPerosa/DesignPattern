@@ -8,7 +8,7 @@ namespace Hotelaria.Models.Gerente
         // Instancia pertencente a classe
         private static Gerente _instancia = new Gerente();
 
-        public static LinkedList<string> Reservas { get; private set; } = new LinkedList<string>();
+        public LinkedList<string> Reservas { get; private set; } = new LinkedList<string>();
 
         // Construtor privado
         private Gerente() { }

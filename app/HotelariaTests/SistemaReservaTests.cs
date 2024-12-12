@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Xunit;
+using Hotelaria.Models.Observador;
 
 namespace Hotelaria.Tests
 {

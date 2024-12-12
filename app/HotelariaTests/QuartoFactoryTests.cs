@@ -1,5 +1,5 @@
 using Xunit;
-using Hotelaria.Models;
+using Hotelaria.Models.Quartos;
 
 namespace Hotelaria.Tests
 {
