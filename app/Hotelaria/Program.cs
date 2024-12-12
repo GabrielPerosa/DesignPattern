@@ -13,7 +13,8 @@ int opcao = 0;
 Gerente gerente = Gerente.ObterInstancia();
 
 while(ExibirMenu) 
-{
+{   
+    Console.Clear();
     Console.WriteLine("\nBem-vindo ao Hotel Itália!\n");
     Console.WriteLine("Escolha uma opção:");
     Console.WriteLine("1 - Reservar novo quarto");
@@ -64,12 +65,7 @@ while(ExibirMenu)
                         validado = true;
                         break;
                     case 4:
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Reserva cancelada.");
-                        Thread.Sleep(1000);
-                        Console.ResetColor();
-                        Console.Clear();
+                        Cancelado();
                         validado = true;
                         break;
                     default:
@@ -86,40 +82,58 @@ while(ExibirMenu)
             listar(gerente);
             break;
         case 3:
+            
             listar(gerente);
             Console.WriteLine("Digite o nome do cliente:");
             string clienteRemover = Console.ReadLine();
-            Console.WriteLine("Digite o tipo do quarto:");
-            Console.WriteLine("1 - Quarto Básico");
-            Console.WriteLine("2 - Quarto Médio");
-            Console.WriteLine("3 - Quarto Luxo");
-            Console.WriteLine("4 - Cancelar\n");
-            string quartoRemover = Console.ReadLine();
-            
-            // Escolha do quarto a ser removido
-            TipoQuarto tipo = TipoQuarto.Economico;
-            if (quartoRemover == "1")
+            bool validadoCase3 = false;
+           
+            while(!validadoCase3)
             {
-                tipo = TipoQuarto.Economico;
-                gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
-            }
-            else if (quartoRemover == "2")
-            {
-                tipo = TipoQuarto.Medio;
-                gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
-            }
-            else if (quartoRemover == "3")
-            {
-                 tipo = TipoQuarto.Luxo;
-                 gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("Opção inválida! Tente novamente.");
-                Thread.Sleep(1200);
-            }
+                Console.WriteLine("Digite o tipo do quarto:");
+                Console.WriteLine("1 - Quarto Básico");
+                Console.WriteLine("2 - Quarto Médio");
+                Console.WriteLine("3 - Quarto Luxo");
+                Console.WriteLine("4 - Cancelar\n");
+                string quartoRemover = Console.ReadLine();
 
+                // Escolha do quarto a ser removido
+                TipoQuarto tipo = TipoQuarto.Economico;
+                if (quartoRemover == "1")
+                {
+                    tipo = TipoQuarto.Economico;
+                    gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
+                    Thread.Sleep(2000); 
+                    validadoCase3 = true;
+
+                }
+                else if (quartoRemover == "2")
+                {
+                    tipo = TipoQuarto.Medio;
+                    gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
+                    Thread.Sleep(2000); 
+                    validadoCase3 = true;
+
+                }
+                else if (quartoRemover == "3")
+                {
+                    tipo = TipoQuarto.Luxo;
+                    gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
+                    Thread.Sleep(2000); 
+                    validadoCase3 = true;
+                }
+                else if (quartoRemover == "4")
+                {
+                    Cancelado();
+                    Thread.Sleep(2000); 
+                    validadoCase3 = true;
+                }
+                else 
+                {
+                    TenteNovamente();
+                }
+
+            }
 
             break;    
         case 4:
@@ -136,12 +150,9 @@ while(ExibirMenu)
             ExibirMenu = false;
             break;
         default:
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Opção inválida! Tente novamente.");
-            Thread.Sleep(1200);
-            Console.ResetColor();
-            Console.Clear();
-            break;
+            TenteNovamente();
+        break;
+
     }
 }  
 
@@ -153,4 +164,22 @@ static void listar(Gerente gerente)
     Console.WriteLine("=================================\n");
     Thread.Sleep(2000);
     Console.ResetColor();
+}
+
+static void TenteNovamente()
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("Opção inválida! Tente novamente.");
+    Thread.Sleep(1200);
+    Console.ResetColor();
+    Console.Clear();
+}
+static void Cancelado()
+{
+    Console.Clear();
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("Reserva cancelada.");
+    Thread.Sleep(1000);
+    Console.ResetColor();
+    Console.Clear();
 }
