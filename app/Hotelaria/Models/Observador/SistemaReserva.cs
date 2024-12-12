@@ -38,8 +38,6 @@ namespace Hotelaria.Models.Observador
             // Adiciona o registrador à lista de observadores
             _observadores.Add(registrador);
 
-            // Notifica os observadores
-            NotificarObservadores($"Nova reserva realizada para {cliente}");
         }
     }
 }
