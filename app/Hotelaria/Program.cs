@@ -28,66 +28,55 @@ while(ExibirMenu)
     switch(opcao)
     {
         case 1:
-            NovaReserva(opcao, gerente);
+            NovaReserva( gerente);
             break;
         case 2:
             listar(gerente);
             break;
         case 3:
-            
             listar(gerente);
+            if(gerente.Reservas.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Nenhuma reserva cadastrada.");
+                Thread.Sleep(1500);
+                Console.ResetColor();
+                break;
+            }
             Console.WriteLine("Digite o nome do cliente:");
             string clienteRemover = Console.ReadLine();
-            bool validadoCase3 = false;
-           
-            while(!validadoCase3)
+
+            Console.Clear();
+            // Opcao de Quarto
+            int quartoRemover = ObterOpcao(
+                "Digite o tipo do quarto:\n1 - Quarto Básico\n2 - Quarto Médio\n3 - Quarto Luxo\n4 - Cancelar\n",
+                1, 4
+            );
+
+            Console.Clear();
+
+            if (quartoRemover == 4)
             {
-                Console.WriteLine("Digite o tipo do quarto:");
-                Console.WriteLine("1 - Quarto Básico");
-                Console.WriteLine("2 - Quarto Médio");
-                Console.WriteLine("3 - Quarto Luxo");
-                Console.WriteLine("4 - Cancelar\n");
-                string quartoRemover = Console.ReadLine();
-
-                // Escolha do quarto a ser removido
-                TipoQuarto tipo = TipoQuarto.Economico;
-                if (quartoRemover == "1")
-                {
-                    tipo = TipoQuarto.Economico;
-                    gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
-                    Thread.Sleep(2000); 
-                    validadoCase3 = true;
-
-                }
-                else if (quartoRemover == "2")
-                {
-                    tipo = TipoQuarto.Medio;
-                    gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
-                    Thread.Sleep(2000); 
-                    validadoCase3 = true;
-
-                }
-                else if (quartoRemover == "3")
-                {
-                    tipo = TipoQuarto.Luxo;
-                    gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
-                    Thread.Sleep(2000); 
-                    validadoCase3 = true;
-                }
-                else if (quartoRemover == "4")
-                {
-                    Cancelado();
-                    Thread.Sleep(2000); 
-                    validadoCase3 = true;
-                }
-                else 
-                {
-                    TenteNovamente();
-                }
-
+                Cancelado();
+                break;
             }
 
-            break;    
+            Console.Clear();
+        
+            // Opcao de Adicional
+            int adicional = ObterOpcao(
+            "Qual pacote adicional?\n1 - Vista para a Praia\n2 - Café da manhã\n3 - Nenhum\n",
+            1, 3
+            );
+
+            Console.Clear();
+
+            var tipoRemover = (TipoQuarto)(quartoRemover - 1); // Mapeia a opção diretamente ao enum
+            var quarto = CriarQuartoComAdicional(tipoRemover, adicional);
+            
+            gerente.RemoverReserva(quarto, clienteRemover);
+            
+            break; 
         case 4:
             Console.Clear();
             Console.WriteLine("Saindo.");
@@ -107,6 +96,20 @@ while(ExibirMenu)
 
     }
 }  
+
+
+
+static int ObterOpcao(string mensagem, int min, int max)
+{
+    int opcao;
+    do
+    {
+        Console.WriteLine(mensagem);
+        if (int.TryParse(Console.ReadLine(), out opcao) && opcao >= min && opcao <= max)
+            return opcao;
+        Console.WriteLine("Entrada inválida. Tente novamente.\n");
+    } while (true);
+}
 
 static void listar(Gerente gerente)
 {
@@ -130,69 +133,54 @@ static void Cancelado()
 {
     Console.Clear();
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("Reserva cancelada.");
+    Console.WriteLine("Operação cancelada.");
     Thread.Sleep(1000);
     Console.ResetColor();
     Console.Clear();
 }
 
-static void NovaReserva(int opcao, Gerente gerente)
+static void NovaReserva(Gerente gerente)
 {
-    // Nome do cliente
     Console.Clear();
     Console.WriteLine("Digite o nome do cliente:");
     string cliente = Console.ReadLine();
-    bool validado = false;
-    // Escolha do quarto
-    while (!validado)
+    Console.Clear();
+
+    int adicional = ObterOpcao(
+        "Deseja qual pacote adicional?\n1 - Vista para a Praia\n2 - Café da manhã\n3 - Não quero nada\n",
+        1, 3
+    );
+
+    Console.Clear();
+
+    int opcao = ObterOpcao(
+        "Escolha um quarto:\n1 - Quarto Básico\n2 - Quarto Médio\n3 - Quarto Luxo\n4 - Cancelar\n",
+        1, 4
+    );
+
+    Console.Clear();
+
+    if (opcao == 4)
     {
-        Console.Clear();
-        Console.WriteLine("Deseja qual pacote adicional? ");
-        Console.WriteLine("1 - Vista para a Praia");
-        Console.WriteLine("2 - Café da manhã");
-        Console.WriteLine("3 - Não quero nada\n");
-
-
-
-        Console.Clear();
-        Console.WriteLine("Escolha um quarto:");
-        Console.WriteLine("1 - Quarto Básico");
-        Console.WriteLine("2 - Quarto Médio");
-        Console.WriteLine("3 - Quarto Luxo");
-        Console.WriteLine("4 - Cancelar\n");
-        opcao = int.Parse(Console.ReadLine());
-        
-        switch(opcao)
-        {
-            case 1:
-                Console.Clear();
-                gerente.AdicionarReserva(QuartoFactory.CriarQuarto(TipoQuarto.Economico), cliente);
-                Thread.Sleep(2000);
-                validado = true;
-                break;
-            case 2:
-                Console.Clear();
-                gerente.AdicionarReserva(QuartoFactory.CriarQuarto(TipoQuarto.Medio), cliente);
-                Thread.Sleep(2000); 
-                validado = true;
-                break;
-            case 3:
-                Console.Clear();
-                gerente.AdicionarReserva(QuartoFactory.CriarQuarto(TipoQuarto.Luxo), cliente);
-                Thread.Sleep(2000); 
-                validado = true;
-                break;
-            case 4:
-                Cancelado();
-                validado = true;
-                break;
-            default:
-                Console.Clear();
-                Console.WriteLine("Opção inválida! Tente novamente.");
-                Thread.Sleep(1000);
-                Console.Clear();
-                break;
-        }
+        Cancelado();
+        return;
     }
-    
+
+    var tipoQuarto = (TipoQuarto)(opcao - 1); // Mapeia a opção diretamente ao enum
+    var quarto = CriarQuartoComAdicional(tipoQuarto, adicional);
+
+    gerente.AdicionarReserva(quarto, cliente);
 }
+
+static Quarto CriarQuartoComAdicional(TipoQuarto tipo, int adicional)
+{
+    var quarto = QuartoFactory.CriarQuarto(tipo);
+    return adicional switch
+    {
+        1 => new QuartoComVistaParaPraia(quarto),
+        2 => new QuartoComCafe(quarto),
+        _ => quarto
+    };
+}
+
+

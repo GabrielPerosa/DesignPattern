@@ -21,31 +21,43 @@ namespace Hotelaria.Models.Gerente
 
         public void AdicionarReserva(Quarto quarto, string cliente)
         {
-            string reserva = $"{cliente} - {quarto.Tipo}";
+            string reserva = $"{cliente} - {quarto.Tipo}: {quarto.Descricao()}";
 
             if (!Reservas.Contains(reserva))
             {
                 Reservas.AddLast(reserva);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Reserva adicionada: {cliente} - {quarto.Descricao()}");
+                Thread.Sleep(2000);
+                Console.ResetColor();
             }
             else
-            {
+            {   
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"A reserva já existe: {reserva}");
+                Thread.Sleep(1500);
+                Console.ResetColor();
+
             }
         }
 
         public void RemoverReserva(Quarto quarto, string cliente)
         {
-            string reserva = $"{cliente} - {quarto.Tipo}";
+            string reserva = $"{cliente} - {quarto.Tipo}: {quarto.Descricao()}";
 
             if (Reservas.Contains(reserva))
             {
                 Reservas.Remove(reserva);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Reserva removida: {cliente} - {quarto.Descricao()}");
+                Console.ResetColor();
             }
             else
-            {
+            {   
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Reserva não encontrada: {reserva}");
+                Thread.Sleep(1500);
+                Console.ResetColor();
             }
         }
 
