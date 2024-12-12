@@ -10,13 +10,17 @@ namespace Hotelaria.Models.Estrategia
         private static readonly Dictionary<TipoQuarto, IEstrategiaDePreco> _estrategias = new()
         {
             { TipoQuarto.Economico, new PrecoBasico() },
-            { TipoQuarto.Medio, new PrecoMedio() },
+            { TipoQuarto.Intermediario, new PrecoMedio() },
             { TipoQuarto.Luxo, new PrecoLuxo() }
         };
 
-        public static IEstrategiaDePreco ObterEstrategia(TipoQuarto tipoQuarto)
+        public static IEstrategiaDePreco ObterEstrategia(string tipoQuarto)
         {
-            return _estrategias[tipoQuarto];
+            if (Enum.TryParse(tipoQuarto, true, out TipoQuarto tipoEnum) && _estrategias.ContainsKey(tipoEnum))
+            {
+                return _estrategias[tipoEnum];
+            }
+            throw new ArgumentException($"Estratégia para o tipo '{tipoQuarto}' não encontrada.");
         }
     }
 }

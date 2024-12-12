@@ -6,9 +6,9 @@ namespace Hotelaria.Models.Estrategia
 {
     public class PrecoMedio : IEstrategiaDePreco
     {
-        public decimal CalcularPreco(Quarto quarto)
+        public string CalcularPreco(Quarto quarto)
         {
-            return 200m;
+            return "200";
         }
     }
 }

@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Hotelaria.Models;
+﻿using Hotelaria.Models;
 using Hotelaria.Models.Estrategia;
 using Hotelaria.Models.Observador;
 using Hotelaria.Models.Quartos;
 using Hotelaria.Models.Adicionais;
-using Hotelaria.Models.Gerente;
-
-// Terminar Adicionais na função NovaReserva
 
 bool ExibirMenu = true;
-int opcao = 0;
-Gerente gerente = Gerente.ObterInstancia();
+int opcao;
+
+SistemaReserva sistemaReserva = SistemaReserva.ObterInstancia();
+sistemaReserva.AdicionarObservador(new RegistradorDeLog());
 
 while(ExibirMenu) 
 {   
@@ -28,14 +24,16 @@ while(ExibirMenu)
     switch(opcao)
     {
         case 1:
-            NovaReserva( gerente);
+            NovaReserva(sistemaReserva);
             break;
         case 2:
-            listar(gerente);
+            ListarReservas(sistemaReserva);
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
             break;
         case 3:
-            listar(gerente);
-            if(gerente.Reservas.Count == 0)
+            ListarReservas(sistemaReserva);
+            if (sistemaReserva.Reservas.Count == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Nenhuma reserva cadastrada.");
@@ -43,11 +41,10 @@ while(ExibirMenu)
                 Console.ResetColor();
                 break;
             }
-            Console.WriteLine("Digite o nome do cliente:");
+            Console.WriteLine("Digite o nome do cliente para remover a reserva:");
             string clienteRemover = Console.ReadLine();
 
             Console.Clear();
-            // Opcao de Quarto
             int quartoRemover = ObterOpcao(
                 "Digite o tipo do quarto:\n1 - Quarto Básico\n2 - Quarto Médio\n3 - Quarto Luxo\n4 - Cancelar\n",
                 1, 4
@@ -62,32 +59,23 @@ while(ExibirMenu)
             }
 
             Console.Clear();
-        
-            // Opcao de Adicional
             int adicional = ObterOpcao(
-            "Qual pacote adicional?\n1 - Vista para a Praia\n2 - Café da manhã\n3 - Nenhum\n",
-            1, 3
+                "Qual pacote adicional?\n1 - Vista para a Praia\n2 - Café da manhã\n3 - Nenhum\n",
+                1, 3
             );
 
             Console.Clear();
 
-            var tipoRemover = (TipoQuarto)(quartoRemover - 1); // Mapeia a opção diretamente ao enum
+            var tipoRemover = (TipoQuarto)(quartoRemover - 1);
             var quarto = CriarQuartoComAdicional(tipoRemover, adicional);
-            
-            gerente.RemoverReserva(quarto, clienteRemover);
-            
+                
+            sistemaReserva.RemoverReserva(quarto, clienteRemover);
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+
             break; 
         case 4:
-            Console.Clear();
-            Console.WriteLine("Saindo.");
-            Thread.Sleep(800);
-            Console.Clear();
-            Console.WriteLine("Saindo..");
-            Thread.Sleep(800);
-            Console.Clear();
-            Console.WriteLine("Saindo...");
-            Thread.Sleep(800);
-            Console.Clear();
+            Saindo();
             ExibirMenu = false;
             break;
         default:
@@ -97,7 +85,19 @@ while(ExibirMenu)
     }
 }  
 
-
+static void Saindo ()
+{
+    Console.Clear();
+    Console.WriteLine("Saindo.");
+    Thread.Sleep(800);
+    Console.Clear();
+    Console.WriteLine("Saindo..");
+    Thread.Sleep(800);
+    Console.Clear();
+    Console.WriteLine("Saindo...");
+    Thread.Sleep(800);
+    Console.Clear();
+}
 
 static int ObterOpcao(string mensagem, int min, int max)
 {
@@ -111,11 +111,11 @@ static int ObterOpcao(string mensagem, int min, int max)
     } while (true);
 }
 
-static void listar(Gerente gerente)
+static void ListarReservas(SistemaReserva sistemaReserva)
 {
     Console.Clear();
     Console.ForegroundColor = ConsoleColor.Blue;
-    gerente.ListarReservas();
+    sistemaReserva.ListarReservas();
     Console.WriteLine("=================================\n");
     Thread.Sleep(2000);
     Console.ResetColor();
@@ -129,6 +129,7 @@ static void TenteNovamente()
     Console.ResetColor();
     Console.Clear();
 }
+
 static void Cancelado()
 {
     Console.Clear();
@@ -139,7 +140,7 @@ static void Cancelado()
     Console.Clear();
 }
 
-static void NovaReserva(Gerente gerente)
+static void NovaReserva(SistemaReserva sistemaReserva)
 {
     Console.Clear();
     Console.WriteLine("Digite o nome do cliente:");
@@ -166,10 +167,12 @@ static void NovaReserva(Gerente gerente)
         return;
     }
 
-    var tipoQuarto = (TipoQuarto)(opcao - 1); // Mapeia a opção diretamente ao enum
+    var tipoQuarto = (TipoQuarto)(opcao - 1);
     var quarto = CriarQuartoComAdicional(tipoQuarto, adicional);
 
-    gerente.AdicionarReserva(quarto, cliente);
+    sistemaReserva.RealizarReserva(cliente, quarto);
+    Console.WriteLine("Pressione qualquer tecla para continuar...");
+    Console.ReadKey();
 }
 
 static Quarto CriarQuartoComAdicional(TipoQuarto tipo, int adicional)
@@ -182,5 +185,3 @@ static Quarto CriarQuartoComAdicional(TipoQuarto tipo, int adicional)
         _ => quarto
     };
 }
-
-

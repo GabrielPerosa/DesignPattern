@@ -6,6 +6,6 @@ namespace Hotelaria.Models.Estrategia
 {
     public interface IEstrategiaDePreco
     {
-        decimal CalcularPreco(Quarto quarto);
+        string CalcularPreco(Quarto quarto);
     }
 }

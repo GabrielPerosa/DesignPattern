@@ -13,7 +13,7 @@ namespace Hotelaria.Models.Estrategia
             _estrategia = estrategia;
         }
         
-    public decimal Calcular(Quarto quarto)
+    public string Calcular(Quarto quarto)
         {
             return _estrategia.CalcularPreco(quarto);
         }

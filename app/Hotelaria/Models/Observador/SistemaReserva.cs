@@ -1,22 +1,31 @@
 using System;
 using System.Collections.Generic;
+using Hotelaria.Models.Estrategia;
+using Hotelaria.Models.Quartos;
 
 namespace Hotelaria.Models.Observador
 {
     public class SistemaReserva
     {
+        public static SistemaReserva _instancia = new SistemaReserva();
+        public LinkedList<string> Reservas { get; private set; } = new LinkedList<string>();
+
         private readonly List<IObservador> _observadores = new List<IObservador>();
 
-        // Expondo os observadores através de uma propriedade somente leitura
         public IReadOnlyList<IObservador> Observadores => _observadores;
-        
-        // Adiciona um observador (administrador) à lista
+
+        private SistemaReserva () { }
+
+        public static SistemaReserva ObterInstancia() 
+        {
+            return _instancia;
+        }
+
         public void AdicionarObservador(IObservador observador)
         {
             _observadores.Add(observador);
         }
 
-        // Notifica todos os observadores registrados
         public void NotificarObservadores(string mensagem)
         {
             foreach (var observador in _observadores)
@@ -24,20 +33,82 @@ namespace Hotelaria.Models.Observador
                 observador.Atualizar(mensagem);
             }
         }
-        public void RealizarReserva(string cliente)
+
+        public void RealizarReserva(string cliente, Quarto quarto)
         {
-            // Simula a realização de uma reserva
-            Console.WriteLine($"Reserva realizada por: {cliente}");
-            
-            // Notifica todos os administradores sobre a nova reserva
-            NotificarObservadores($"Nova reserva realizada: {cliente}");
+            IEstrategiaDePreco estrategia = GerenciadorDeEstrategias.ObterEstrategia(quarto.Tipo);
 
-            // Cria um novo registrador de log
-            RegistradorDeLog registrador = new RegistradorDeLog();
+            string preco = estrategia.CalcularPreco(quarto);
+            string reserva = $"Cliente: {cliente} \nTipo: {quarto.Tipo} \nDescrição: {quarto.Descricao() }\nPreço: {preco}";
 
-            // Adiciona o registrador à lista de observadores
-            _observadores.Add(registrador);
+            if (!Reservas.Contains(reserva))
+            {
+                Reservas.AddLast(reserva);
 
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Reserva realizada por: {cliente} para o quarto: {quarto.Descricao()}");
+
+                NotificarObservadores($"Nova reserva realizada: {cliente} para o quarto: {quarto.Descricao()}");
+
+                RegistradorDeLog registrador = new RegistradorDeLog();
+
+                _observadores.Add(registrador);
+
+                Thread.Sleep(1000);
+                Console.ResetColor();
+            }
+            else
+            {   
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"A reserva já existe: {reserva}");
+                Thread.Sleep(1500);
+                Console.ResetColor();
+            }
+        }
+
+        public void RemoverReserva(Quarto quarto, string cliente)
+        {
+            IEstrategiaDePreco estrategia = GerenciadorDeEstrategias.ObterEstrategia(quarto.Tipo);
+
+            string preco = estrategia.CalcularPreco(quarto);
+            string reserva = $"Cliente: {cliente} \nTipo: {quarto.Tipo} \nDescrição: {quarto.Descricao() }\nPreço: {preco}";
+
+            if (Reservas.Contains(reserva))
+            {
+                Reservas.Remove(reserva);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Reserva removida: {cliente} - {quarto.Descricao()}");
+
+                NotificarObservadores($"Reserva removida: {cliente} para o quarto: {quarto.Descricao()}");
+                
+                Thread.Sleep(1000);
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Reserva não encontrada: {reserva}");
+                Thread.Sleep(1500);
+                Console.ResetColor();
+            }
+        }
+
+        public void ListarReservas()
+        {
+            Console.WriteLine("Reservas: ");
+            if (Reservas.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Não há reservas no sistema.");
+                Console.ResetColor();
+            }
+            else
+            {
+                foreach (var reserva in Reservas)
+                {
+                    Console.WriteLine(reserva);
+                }
+            }
         }
     }
 }

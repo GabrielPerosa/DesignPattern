@@ -6,7 +6,7 @@ namespace Hotelaria.Models.Quartos
     {
         public override string Tipo 
         {   
-            get { return "Intermediário"; }
+            get { return "Intermediario"; }
         }
         public override string Descricao ()
         {
