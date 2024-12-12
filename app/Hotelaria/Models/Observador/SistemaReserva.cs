@@ -31,6 +31,15 @@ namespace Hotelaria.Models.Observador
             
             // Notifica todos os administradores sobre a nova reserva
             NotificarObservadores($"Nova reserva realizada: {cliente}");
+
+            // Cria um novo registrador de log
+            RegistradorDeLog registrador = new RegistradorDeLog();
+
+            // Adiciona o registrador à lista de observadores
+            _observadores.Add(registrador);
+
+            // Notifica os observadores
+            NotificarObservadores($"Nova reserva realizada para {cliente}");
         }
     }
 }
