@@ -20,7 +20,7 @@ namespace Hotelaria.Tests
             var preco = estrategia.CalcularPreco(quartoSimples);
 
             // Assert
-            Assert.Equal(100m, preco); // Preço esperado é 100
+            Assert.Equal("100", preco); // Preço esperado é 100
         }
 
         /*
@@ -37,7 +37,7 @@ namespace Hotelaria.Tests
             var preco = estrategia.CalcularPreco(quartoDuplo);
 
             // Assert
-            Assert.Equal(200m, preco); // Preço esperado é 200
+            Assert.Equal("200", preco); // Preço esperado é 200
         }
 
         /*
@@ -54,7 +54,7 @@ namespace Hotelaria.Tests
             var preco = estrategia.CalcularPreco(quartoLuxo);
 
             // Assert
-            Assert.Equal(500m, preco); // Preço esperado é 500
+            Assert.Equal("500", preco); // Preço esperado é 500
         }
 
         /*
@@ -72,7 +72,7 @@ namespace Hotelaria.Tests
             var preco = calculadora.Calcular(quartoSimples);
 
             // Assert
-            Assert.Equal(100m, preco); // Preço esperado é 100
+            Assert.Equal("100", preco); // Preço esperado é 100
         }
     }
 }

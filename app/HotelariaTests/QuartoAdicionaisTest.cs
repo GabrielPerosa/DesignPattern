@@ -16,7 +16,7 @@ namespace HotelariaTests
         {
             //Arrange 
             Quarto quarto1 = QuartoFactory.CriarQuarto(TipoQuarto.Luxo);
-            Quarto quarto2 = QuartoFactory.CriarQuarto(TipoQuarto.Medio);
+            Quarto quarto2 = QuartoFactory.CriarQuarto(TipoQuarto.Intermediario);
 
             // Act
             QuartoAdicionais quartoComCafe = new QuartoComCafe(quarto1);

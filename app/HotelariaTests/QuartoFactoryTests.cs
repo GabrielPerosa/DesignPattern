@@ -29,14 +29,14 @@ namespace Hotelaria.Tests
         public void CriarQuarto_Medio_RetornaQuartoMedio()
         {
             // Arrange
-            TipoQuarto tipo = TipoQuarto.Medio;
+            TipoQuarto tipo = TipoQuarto.Intermediario;
 
             // Act
             Quarto quarto = QuartoFactory.CriarQuarto(tipo);
 
             // Assert
             Assert.IsType<QuartoMedio>(quarto); // Verifica se o tipo do quarto é QuartoMedio
-            Assert.Equal("Intermediário", quarto.Tipo); // Verifica o tipo de quarto (agora comparando string)
+            Assert.Equal("Intermediario", quarto.Tipo); // Verifica o tipo de quarto (agora comparando string)
         }
 
         /*
