@@ -1,0 +1,17 @@
+12/12/2024 19:17:25 - Nova reserva realizada: as para o quarto: Quarto Básico, apenas uma cama e um banheiro simples com vista para praia
+12/12/2024 19:17:34 - Nova reserva realizada: 12 para o quarto: Quarto Intermediário, contém duas camas e um banheiro simples com café da manhã
+12/12/2024 19:17:34 - Nova reserva realizada: 12 para o quarto: Quarto Intermediário, contém duas camas e um banheiro simples com café da manhã
+12/12/2024 19:17:41 - Nova reserva realizada: d para o quarto: Quarto Luxuoso, contém duas camas e um banheiro com banheira de hidromassagem
+12/12/2024 19:17:41 - Nova reserva realizada: d para o quarto: Quarto Luxuoso, contém duas camas e um banheiro com banheira de hidromassagem
+12/12/2024 19:17:41 - Nova reserva realizada: d para o quarto: Quarto Luxuoso, contém duas camas e um banheiro com banheira de hidromassagem
+12/12/2024 19:19:32 - Nova reserva realizada: a para o quarto: Quarto Básico, apenas uma cama e um banheiro simples com vista para praia
+12/12/2024 19:19:40 - Reserva removida: a para o quarto: Quarto Básico, apenas uma cama e um banheiro simples com vista para praia
+12/12/2024 19:19:40 - Reserva removida: a para o quarto: Quarto Básico, apenas uma cama e um banheiro simples com vista para praia
+12/12/2024 19:21:57 - Nova reserva realizada: a para o quarto: Quarto Luxuoso, contém duas camas e um banheiro com banheira de hidromassagem
+12/12/2024 19:22:16 - Reserva removida: a para o quarto: Quarto Luxuoso, contém duas camas e um banheiro com banheira de hidromassagem
+12/12/2024 19:22:16 - Reserva removida: a para o quarto: Quarto Luxuoso, contém duas camas e um banheiro com banheira de hidromassagem
+12/12/2024 19:22:35 - Nova reserva realizada: a para o quarto: Quarto Básico, apenas uma cama e um banheiro simples com vista para praia
+12/12/2024 19:23:33 - Nova reserva realizada: 1 para o quarto: Quarto Básico, apenas uma cama e um banheiro simples com vista para praia
+12/12/2024 20:27:25 - Nova reserva realizada: Gas para o quarto: Quarto Básico, apenas uma cama e um banheiro simples com vista para praia
+12/12/2024 20:27:36 - Reserva removida: Gas para o quarto: Quarto Básico, apenas uma cama e um banheiro simples com vista para praia
+12/12/2024 20:27:36 - Reserva removida: Gas para o quarto: Quarto Básico, apenas uma cama e um banheiro simples com vista para praia

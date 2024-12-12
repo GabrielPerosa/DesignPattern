@@ -1,5 +1,6 @@
 using Xunit;
-using Hotelaria.Models;
+using Hotelaria.Models.Estrategia;
+using Hotelaria.Models.Quartos;
 
 namespace Hotelaria.Tests
 {
@@ -12,14 +13,14 @@ namespace Hotelaria.Tests
         public void PrecoSimples_CalculaPrecoCorretamente()
         {
             // Arrange
-            var estrategia = new PrecoSimples();
-            var quartoSimples = new QuartoSimples();
+            var estrategia = new PrecoBasico();
+            var quartoSimples = new QuartoBasico();
 
             // Act
             var preco = estrategia.CalcularPreco(quartoSimples);
 
             // Assert
-            Assert.Equal(100m, preco); // Preço esperado é 100
+            Assert.Equal("100", preco); // Preço esperado é 100
         }
 
         /*
@@ -29,14 +30,14 @@ namespace Hotelaria.Tests
         public void PrecoDuplo_CalculaPrecoCorretamente()
         {
             // Arrange
-            var estrategia = new PrecoDuplo();
-            var quartoDuplo = new QuartoDuplo();
+            var estrategia = new PrecoMedio();
+            var quartoDuplo = new QuartoMedio();
 
             // Act
             var preco = estrategia.CalcularPreco(quartoDuplo);
 
             // Assert
-            Assert.Equal(200m, preco); // Preço esperado é 200
+            Assert.Equal("200", preco); // Preço esperado é 200
         }
 
         /*
@@ -53,7 +54,7 @@ namespace Hotelaria.Tests
             var preco = estrategia.CalcularPreco(quartoLuxo);
 
             // Assert
-            Assert.Equal(500m, preco); // Preço esperado é 500
+            Assert.Equal("500", preco); // Preço esperado é 500
         }
 
         /*
@@ -63,15 +64,15 @@ namespace Hotelaria.Tests
         public void CalculadoraDePreco_UsaEstrategiaCorreta()
         {
             // Arrange
-            var estrategia = new PrecoSimples();
+            var estrategia = new PrecoBasico();
             var calculadora = new CalculadoraDePreco(estrategia);
-            var quartoSimples = new QuartoSimples();
+            var quartoSimples = QuartoFactory.CriarQuarto(TipoQuarto.Economico);
 
             // Act
             var preco = calculadora.Calcular(quartoSimples);
 
             // Assert
-            Assert.Equal(100m, preco); // Preço esperado é 100
+            Assert.Equal("100", preco); // Preço esperado é 100
         }
     }
 }

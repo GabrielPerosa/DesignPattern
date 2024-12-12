@@ -6,7 +6,7 @@ namespace Hotelaria.Models.Quartos
     public enum TipoQuarto
     {
         Economico,
-        Medio,
+        Intermediario,
         Luxo
     }
 
@@ -18,7 +18,7 @@ namespace Hotelaria.Models.Quartos
            {
             case TipoQuarto.Economico:
                 return new QuartoBasico();
-            case TipoQuarto.Medio:
+            case TipoQuarto.Intermediario:
                 return new QuartoMedio();
             case TipoQuarto.Luxo: 
                 return new QuartoLuxo();
