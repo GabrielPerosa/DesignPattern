@@ -101,14 +101,17 @@ while(ExibirMenu)
             if (quartoRemover == "1")
             {
                 tipo = TipoQuarto.Economico;
+                gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
             }
             else if (quartoRemover == "2")
             {
                 tipo = TipoQuarto.Medio;
+                gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
             }
             else if (quartoRemover == "3")
             {
                  tipo = TipoQuarto.Luxo;
+                 gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
             }
             else
             {
@@ -117,7 +120,6 @@ while(ExibirMenu)
                 Thread.Sleep(1200);
             }
 
-            gerente.RemoverReserva(QuartoFactory.CriarQuarto(tipo), clienteRemover);
 
             break;    
         case 4:
