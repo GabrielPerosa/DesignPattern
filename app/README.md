@@ -32,7 +32,7 @@ O padrão Observer é utilizado para notificar observadores (como o RegistradorD
 - Objetivo: Notificar mudanças no sistema para outros componentes interessados.
 <br>
 
-### 5. Singleton 🧑‍💻
+### 5. Singleton 🧑‍💻 
 O padrão Singleton é utilizado na classe SistemaReserva para garantir que haja apenas uma instância do sistema de reservas.
 
 - Classe responsável: SistemaReserva
